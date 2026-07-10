@@ -29,6 +29,18 @@ jobs:
           echo "Listing WAR files:"
           find . -name "*.war" || echo "No WAR files found!"
 
+      - name: Set up JDK 17 and Configure Maven
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          server-id: nexus-releases
+          server-username: NEXUS_USERNAME
+          server-password: NEXUS_PASSWORD
+        env:
+          NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
+          NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
+
       - name: Upload WAR file via SCP
         uses: appleboy/scp-action@v0.1.7
         with:
