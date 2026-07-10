@@ -60,4 +60,4 @@ jobs:
 
             sudo systemctl status tomcat --no-pager
 
-            echo "✅ Deployment complete!"
+            echo "✅ Deployment complete !"
